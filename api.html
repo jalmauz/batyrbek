@@ -1,15 +1,198 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>API</title>
+<meta charset="UTF-8">
+<title>Weather</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b1220;
+  color: #e5e7eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ====== MAIN CARD ====== */
+.card-main {
+  width: 600px;
+  height: 350px;
+  background: #111a2e;
+  border-radius: 12px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* header */
+h1 {
+  margin: 0;
+}
+
+.subtext {
+  font-size: 14px;
+  opacity: 0.7;
+  margin-top: 5px;
+}
+
+/* city selector */
+.city {
+  margin-top: 20px;
+  padding: 10px;
+  background: #1a2742;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* weather block */
+.weather-box {
+  margin-top: 20px;
+  height: 140px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+/* day/night */
+.day {
+  background: #1e3a8a;
+}
+
+.night {
+  background: #0f172a;
+}
+
+/* left info */
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.temp {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.desc {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.extra {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 5px;
+}
+
+/* icon */
+.icon {
+  font-size: 50px;
+}
+
+/* forecast */
+.forecast {
+  width: 600px;
+  height: 150px;
+  background: #111a2e;
+  border-radius: 12px;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.day-box {
+  text-align: center;
+  opacity: 0.8;
+}
+
+.today {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* footer */
+.footer {
+  font-size: 12px;
+  opacity: 0.6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* refresh button */
+.refresh {
+  cursor: pointer;
+}
+</style>
 </head>
-<body style="background:#111; color:white; font-family:Arial; text-align:center;">
 
-<h1>API Block</h1>
-<p>Тут будет погода и курс валют</p>
+<body>
 
-<a href="index.html">Назад</a>
+<div class="wrapper">
+
+  <!-- MAIN -->
+  <div class="card-main">
+
+    <h1>Weather</h1>
+    <div class="subtext">Choose a city and get the forecast</div>
+
+    <div class="city">Moscow ▼</div>
+
+    <!-- weather -->
+    <div class="weather-box day">
+
+      <div class="weather-info">
+        <div class="temp">+12°</div>
+        <div class="desc">Clear sky</div>
+        <div class="desc">Feels like +10°</div>
+
+        <div class="extra">Humidity: 60%</div>
+        <div class="extra">Wind: 4 m/s</div>
+      </div>
+
+      <div class="icon">☀️</div>
+    </div>
+
+  </div>
+
+  <!-- FORECAST -->
+  <div class="forecast">
+
+    <div class="day-box">-1<br>Night</div>
+
+    <div class="day-box today">
+      Today<br>
+      +12°<br>
+      +8°
+    </div>
+
+    <div class="day-box">+2<br>Day</div>
+    <div class="day-box">+3<br>Day</div>
+    <div class="day-box">+4<br>Day</div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>updated: 12:45 p.m.</div>
+    <div class="refresh">🔄</div>
+  </div>
+
+</div>
 
 </body>
 </html>
