@@ -16,6 +16,28 @@ body {
   height: 100vh;
 }
 
+/* NEW WRAPPER FOR BACK BUTTON */
+.wrapper-all {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* BACK BUTTON (OUTSIDE UI) */
+.back-btn {
+  background: #e2e8f0;
+  color: #0f172a;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 14px;
+  height: fit-content;
+}
+
+.back-btn:hover {
+  background: #cbd5e1;
+}
+
 /* WRAPPER */
 .wrapper {
   width: 380px;
@@ -71,7 +93,6 @@ body {
   margin-top: 4px;
 }
 
-/* ICON */
 .icon {
   font-size: 22px;
   margin-bottom: 6px;
@@ -81,28 +102,33 @@ body {
 </head>
 <body>
 
-<div class="wrapper">
+<div class="wrapper-all">
 
-  <div class="header">
-    <h1>API Hub</h1>
-    <p>Choose a service</p>
-  </div>
+  <!-- BACK BUTTON OUTSIDE UI -->
+  <a href="index.html" class="back-btn">← Back</a>
 
-  <div class="cards">
+  <div class="wrapper">
 
-    <!-- WEATHER -->
-    <a href="weather.html" class="card">
-      <div class="icon">🌤️</div>
-      <div class="card-title">Weather</div>
-      <div class="card-desc">Live weather forecast API</div>
-    </a>
+    <div class="header">
+      <h1>API Hub</h1>
+      <p>Choose a service</p>
+    </div>
 
-    <!-- CURRENCY -->
-    <a href="currency.html" class="card">
-      <div class="icon">💱</div>
-      <div class="card-title">Currency</div>
-      <div class="card-desc">Exchange rates & converter</div>
-    </a>
+    <div class="cards">
+
+      <a href="weather.html" class="card">
+        <div class="icon">🌤️</div>
+        <div class="card-title">Weather</div>
+        <div class="card-desc">Live weather forecast API</div>
+      </a>
+
+      <a href="currency.html" class="card">
+        <div class="icon">💱</div>
+        <div class="card-title">Currency</div>
+        <div class="card-desc">Exchange rates & converter</div>
+      </a>
+
+    </div>
 
   </div>
 
