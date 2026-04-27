@@ -16,14 +16,14 @@ body {
   height: 100vh;
 }
 
-/* NEW WRAPPER (чтобы кнопка была слева) */
+/* WRAPPER */
 .wrapper {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* BACK BUTTON (СНАРУЖИ UI) */
+/* BACK BUTTON */
 .back-btn {
   background: #e2e8f0;
   color: #0f172a;
@@ -38,8 +38,7 @@ body {
   background: #cbd5e1;
 }
 
-/* ===== ТВОЙ ОРИГИНАЛ БЕЗ ИЗМЕНЕНИЙ ===== */
-
+/* CARD */
 .card {
   width: 350px;
   background: #f8fafc;
@@ -128,9 +127,6 @@ body {
 }
 
 .stat {
-  display: flex;
-  align-items: center;
-  gap: 6px;
   font-size: 12px;
   opacity: 0.95;
 }
@@ -153,7 +149,6 @@ body {
 .day.today {
   background: #dbeafe;
   border: 2px solid #3b82f6;
-  box-shadow: 0 0 10px rgba(59,130,246,0.3);
 }
 
 .today-badge {
@@ -196,8 +191,8 @@ body {
 
 <div class="wrapper">
 
-  <!-- КНОПКА СНАРУЖИ КАРТОЧКИ -->
-  <a href="index.html" class="back-btn">← Back</a>
+  <!-- BACK BUTTON (FIXED) -->
+  <a href="../api.html" class="back-btn">← Back</a>
 
   <div class="card">
 
@@ -207,9 +202,7 @@ body {
     </div>
 
     <div class="city">
-      <div class="city-left">
-        📍 Astana, Kazakhstan
-      </div>
+      <div class="city-left">📍 Astana, Kazakhstan</div>
       <div class="city-btn">▼</div>
     </div>
 
