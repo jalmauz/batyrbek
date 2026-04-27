@@ -10,57 +10,46 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #0f172a;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+
+  min-height: 100vh;
+  padding: 20px;
 }
 
-/* NEW WRAPPER FOR BACK BUTTON */
+/* BACK + CENTER */
 .wrapper-all {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* BACK BUTTON (OUTSIDE UI) */
+/* BACK */
 .back-btn {
   background: #e2e8f0;
   color: #0f172a;
   padding: 10px 12px;
   border-radius: 12px;
   text-decoration: none;
-  font-size: 14px;
-  height: fit-content;
 }
 
-.back-btn:hover {
-  background: #cbd5e1;
-}
-
-/* WRAPPER */
+/* CONTENT */
 .wrapper {
   width: 380px;
   color: white;
 }
 
-/* HEADER */
-.header {
-  margin-bottom: 14px;
-}
-
 .header h1 {
   margin: 0;
-  font-size: 22px;
 }
 
 .header p {
-  margin: 4px 0 0;
   font-size: 12px;
   color: #94a3b8;
 }
 
-/* CARDS */
 .cards {
   display: flex;
   flex-direction: column;
@@ -71,31 +60,25 @@ body {
   background: #1e293b;
   padding: 14px;
   border-radius: 14px;
-  cursor: pointer;
-  transition: 0.2s;
   text-decoration: none;
   color: white;
 }
 
 .card:hover {
-  transform: translateY(-2px);
   background: #273449;
 }
 
+.icon {
+  font-size: 22px;
+}
+
 .card-title {
-  font-size: 16px;
   font-weight: 600;
 }
 
 .card-desc {
   font-size: 12px;
   color: #94a3b8;
-  margin-top: 4px;
-}
-
-.icon {
-  font-size: 22px;
-  margin-bottom: 6px;
 }
 </style>
 
@@ -104,14 +87,13 @@ body {
 
 <div class="wrapper-all">
 
-  <!-- BACK BUTTON OUTSIDE UI -->
   <a href="index.html" class="back-btn">← Back</a>
 
   <div class="wrapper">
 
     <div class="header">
       <h1>API Hub</h1>
-      <p>Choose a service</p>
+      <p>Choose service</p>
     </div>
 
     <div class="cards">
@@ -119,13 +101,13 @@ body {
       <a href="api/weather.html" class="card">
         <div class="icon">🌤️</div>
         <div class="card-title">Weather</div>
-        <div class="card-desc">Live weather forecast API</div>
+        <div class="card-desc">Forecast API</div>
       </a>
 
       <a href="currency.html" class="card">
         <div class="icon">💱</div>
         <div class="card-title">Currency</div>
-        <div class="card-desc">Exchange rates & converter</div>
+        <div class="card-desc">Rates API</div>
       </a>
 
     </div>
