@@ -22,7 +22,6 @@ body {
   gap: 15px;
 }
 
-/* ====== MAIN CARD ====== */
 .card-main {
   width: 600px;
   height: 350px;
@@ -32,7 +31,6 @@ body {
   box-sizing: border-box;
 }
 
-/* header */
 h1 {
   margin: 0;
 }
@@ -43,17 +41,14 @@ h1 {
   margin-top: 5px;
 }
 
-/* city selector */
 .city {
   margin-top: 20px;
   padding: 10px;
   background: #1a2742;
   border-radius: 8px;
-  cursor: pointer;
   display: inline-block;
 }
 
-/* weather block */
 .weather-box {
   margin-top: 20px;
   height: 140px;
@@ -62,18 +57,9 @@ h1 {
   justify-content: space-between;
   padding: 15px;
   box-sizing: border-box;
-}
-
-/* day/night */
-.day {
   background: #1e3a8a;
 }
 
-.night {
-  background: #0f172a;
-}
-
-/* left info */
 .weather-info {
   display: flex;
   flex-direction: column;
@@ -96,12 +82,10 @@ h1 {
   margin-top: 5px;
 }
 
-/* icon */
 .icon {
   font-size: 50px;
 }
 
-/* forecast */
 .forecast {
   width: 600px;
   height: 150px;
@@ -124,16 +108,13 @@ h1 {
   font-weight: bold;
 }
 
-/* footer */
 .footer {
   font-size: 12px;
   opacity: 0.6;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
-/* refresh button */
 .refresh {
   cursor: pointer;
 }
@@ -144,7 +125,6 @@ h1 {
 
 <div class="wrapper">
 
-  <!-- MAIN -->
   <div class="card-main">
 
     <h1>Weather</h1>
@@ -152,8 +132,7 @@ h1 {
 
     <div class="city">Moscow ▼</div>
 
-    <!-- weather -->
-    <div class="weather-box day">
+    <div class="weather-box">
 
       <div class="weather-info">
         <div class="temp">+12°</div>
@@ -169,7 +148,6 @@ h1 {
 
   </div>
 
-  <!-- FORECAST -->
   <div class="forecast">
 
     <div class="day-box">-1<br>Night</div>
@@ -186,7 +164,6 @@ h1 {
 
   </div>
 
-  <!-- FOOTER -->
   <div class="footer">
     <div>updated: 12:45 p.m.</div>
     <div class="refresh">🔄</div>
