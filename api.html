@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <title>Weather</title>
@@ -12,161 +12,199 @@ body {
   color: #e5e7eb;
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.card-main {
-  width: 600px;
-  height: 350px;
-  background: #111a2e;
-  border-radius: 12px;
-  padding: 20px;
+  padding: 40px;
   box-sizing: border-box;
 }
 
-h1 {
-  margin: 0;
+/* APP WRAPPER */
+.app {
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.subtext {
-  font-size: 14px;
-  opacity: 0.7;
-  margin-top: 5px;
-}
-
-.city {
-  margin-top: 20px;
-  padding: 10px;
-  background: #1a2742;
-  border-radius: 8px;
-  display: inline-block;
-}
-
-.weather-box {
-  margin-top: 20px;
-  height: 140px;
-  border-radius: 10px;
+/* HEADER */
+.header {
   display: flex;
   justify-content: space-between;
-  padding: 15px;
-  box-sizing: border-box;
-  background: #1e3a8a;
+  align-items: center;
 }
 
-.weather-info {
+.title {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* CITY SELECT */
+.city {
+  background: #111a2e;
+  padding: 12px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-block;
+  width: fit-content;
+  border: 1px solid #26324a;
+}
+
+/* CURRENT WEATHER CARD */
+.current {
+  height: 220px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #1e3a8a, #0f172a);
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+/* LEFT SIDE */
+.info {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 6px;
 }
 
 .temp {
-  font-size: 32px;
+  font-size: 48px;
   font-weight: bold;
 }
 
 .desc {
-  font-size: 14px;
-  opacity: 0.8;
+  font-size: 16px;
+  opacity: 0.85;
 }
 
-.extra {
-  font-size: 12px;
+.small {
+  font-size: 13px;
   opacity: 0.7;
+}
+
+/* ICON */
+.icon {
+  font-size: 60px;
+}
+
+/* FORECAST */
+.forecast {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.day {
+  flex: 1;
+  background: #111a2e;
+  border: 1px solid #26324a;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+}
+
+.day .name {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.day .t {
+  font-size: 18px;
   margin-top: 5px;
 }
 
-.icon {
-  font-size: 50px;
+.day.today {
+  background: #1a2742;
+  border: 1px solid #3b82f6;
 }
 
-.forecast {
-  width: 600px;
-  height: 150px;
-  background: #111a2e;
-  border-radius: 12px;
-  padding: 15px;
-  box-sizing: border-box;
+/* FOOTER */
+.footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.day-box {
-  text-align: center;
-  opacity: 0.8;
-}
-
-.today {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.footer {
   font-size: 12px;
   opacity: 0.6;
-  display: flex;
-  justify-content: space-between;
 }
 
 .refresh {
   cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.refresh:hover {
+  transform: rotate(90deg);
 }
 </style>
 </head>
 
 <body>
 
-<div class="wrapper">
+<div class="app">
 
-  <div class="card-main">
-
-    <h1>Weather</h1>
-    <div class="subtext">Choose a city and get the forecast</div>
-
-    <div class="city">Moscow ▼</div>
-
-    <div class="weather-box">
-
-      <div class="weather-info">
-        <div class="temp">+12°</div>
-        <div class="desc">Clear sky</div>
-        <div class="desc">Feels like +10°</div>
-
-        <div class="extra">Humidity: 60%</div>
-        <div class="extra">Wind: 4 m/s</div>
-      </div>
-
-      <div class="icon">☀️</div>
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="title">Weather</div>
+      <div class="subtitle">Choose a city and get the forecast</div>
     </div>
+  </div>
+
+  <!-- CITY -->
+  <div class="city">Moscow ▼</div>
+
+  <!-- CURRENT WEATHER -->
+  <div class="current">
+
+    <div class="info">
+      <div class="temp">+12°</div>
+      <div class="desc">Clear sky</div>
+      <div class="small">Feels like +10°</div>
+      <div class="small">Humidity: 60% • Wind: 4 m/s</div>
+    </div>
+
+    <div class="icon">☀️</div>
 
   </div>
 
+  <!-- FORECAST -->
   <div class="forecast">
 
-    <div class="day-box">-1<br>Night</div>
-
-    <div class="day-box today">
-      Today<br>
-      +12°<br>
-      +8°
+    <div class="day">
+      <div class="name">Mon</div>
+      <div class="t">+8°</div>
+      <div class="small">-1° night</div>
     </div>
 
-    <div class="day-box">+2<br>Day</div>
-    <div class="day-box">+3<br>Day</div>
-    <div class="day-box">+4<br>Day</div>
+    <div class="day today">
+      <div class="name">Today</div>
+      <div class="t">+12°</div>
+      <div class="small">+8° night</div>
+    </div>
+
+    <div class="day">
+      <div class="name">Wed</div>
+      <div class="t">+14°</div>
+      <div class="small">+9° night</div>
+    </div>
+
+    <div class="day">
+      <div class="name">Thu</div>
+      <div class="t">+10°</div>
+      <div class="small">+6° night</div>
+    </div>
 
   </div>
 
+  <!-- FOOTER -->
   <div class="footer">
     <div>updated: 12:45 p.m.</div>
-    <div class="refresh">🔄</div>
+    <div class="refresh">⟳</div>
   </div>
 
 </div>
