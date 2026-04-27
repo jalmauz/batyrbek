@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>API Demo</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      transition: 0.5s;
+    }
+
+    .day {
+      background: linear-gradient(#4facfe, #00f2fe);
+    }
+
+    .night {
+      background: linear-gradient(#0f2027, #203a43, #2c5364);
+    }
+
+    h1 {
+      padding-top: 30px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: rgba(0,0,0,0.3);
+      padding: 20px;
+      border-radius: 10px;
+      width: 150px;
+    }
+
+    img {
+      width: 60px;
+    }
+
+    .back {
+      margin-top: 30px;
+      display: inline-block;
+      color: white;
+    }
+  </style>
+</head>
+
+<body id="body">
+
+<h1>Weather Demo</h1>
+
+<div class="container" id="weather"></div>
+
+<a href="index.html" class="back">← Назад</a>
+
+<script>
+const cities = [
+  {name: "Astana", lat: 51.16, lon: 71.47},
+  {name: "Almaty", lat: 43.24, lon: 76.92},
+  {name: "Aktau", lat: 43.65, lon: 51.16}
+];
+
+async function getWeather() {
+  const container = document.getElementById("weather");
+
+  for (let city of cities) {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${city.lat}&longitude=${city.lon}&current_weather=true`;
+
+    const res = await fetch(url);
+    const data = await res.json();
+
+    const temp = data.current_weather.temperature;
+    const time = data.current_weather.time;
+
+    const hour = new Date(time).getHours();
+
+    // день или ночь
+    if (hour > 6 && hour < 20) {
+      document.body.className = "day";
+    } else {
+      document.body.className = "night";
+    }
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <h3>${city.name}</h3>
+      <p>${temp}°C</p>
+      <p>${hour > 6 && hour < 20 ? "Day" : "Night"}</p>
+    `;
+
+    container.appendChild(card);
+  }
+}
+
+getWeather();
+</script>
+
+</body>
+</html>
