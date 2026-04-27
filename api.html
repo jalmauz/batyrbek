@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Weather UI</title>
+<title>API Hub</title>
 
 <style>
 body {
@@ -16,178 +16,65 @@ body {
   height: 100vh;
 }
 
-/* NEW WRAPPER (чтобы кнопка была слева) */
+/* WRAPPER */
 .wrapper {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  width: 380px;
+  color: white;
 }
 
-/* BACK BUTTON (СНАРУЖИ UI) */
-.back-btn {
-  background: #e2e8f0;
-  color: #0f172a;
-  padding: 10px 12px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-size: 14px;
-  height: fit-content;
-}
-
-.back-btn:hover {
-  background: #cbd5e1;
-}
-
-/* ===== ТВОЙ ОРИГИНАЛ БЕЗ ИЗМЕНЕНИЙ ===== */
-
-.card {
-  width: 350px;
-  background: #f8fafc;
-  border-radius: 22px;
-  padding: 20px;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.4);
-}
-
+/* HEADER */
 .header {
-  text-align: center;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .header h1 {
   margin: 0;
   font-size: 22px;
-  color: #0f172a;
 }
 
 .header p {
-  margin: 6px 0 0;
+  margin: 4px 0 0;
   font-size: 12px;
-  color: #64748b;
+  color: #94a3b8;
 }
 
-.city {
+/* CARDS */
+.cards {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #e2e8f0;
-  padding: 10px 12px;
-  border-radius: 12px;
-  margin: 12px 0;
-  font-size: 14px;
-  color: #0f172a;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.city-left {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.city-btn {
-  font-size: 12px;
-  color: #475569;
-}
-
-.weather-box {
-  background: linear-gradient(135deg, #60a5fa, #2563eb);
-  border-radius: 18px;
-  padding: 16px;
-  color: white;
-}
-
-.top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.temp {
-  font-size: 56px;
-  font-weight: 700;
-  letter-spacing: -2px;
-}
-
-.desc {
-  font-size: 14px;
-  margin-top: 4px;
-}
-
-.feels {
-  font-size: 12px;
-  opacity: 0.8;
-}
-
-.weather-icon {
-  font-size: 52px;
-}
-
-.stats {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 14px;
-}
-
-.stat {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  opacity: 0.95;
-}
-
-.days {
-  display: flex;
-  gap: 8px;
-  margin-top: 14px;
-}
-
-.day {
-  flex: 1;
-  background: #e2e8f0;
+.card {
+  background: #1e293b;
+  padding: 14px;
   border-radius: 14px;
-  padding: 10px;
-  text-align: center;
-  position: relative;
-}
-
-.day.today {
-  background: #dbeafe;
-  border: 2px solid #3b82f6;
-  box-shadow: 0 0 10px rgba(59,130,246,0.3);
-}
-
-.today-badge {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  font-size: 9px;
-  background: #3b82f6;
+  cursor: pointer;
+  transition: 0.2s;
+  text-decoration: none;
   color: white;
-  padding: 2px 6px;
-  border-radius: 8px;
 }
 
-.day-name {
+.card:hover {
+  transform: translateY(-2px);
+  background: #273449;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.card-desc {
   font-size: 12px;
-  color: #0f172a;
-  opacity: 0.7;
-}
-
-.day-temp {
-  font-size: 14px;
-  font-weight: 700;
+  color: #94a3b8;
   margin-top: 4px;
 }
 
-.day-icon {
-  font-size: 18px;
-}
-
-.footer {
-  text-align: center;
-  font-size: 11px;
-  margin-top: 10px;
-  color: #64748b;
+/* ICON */
+.icon {
+  font-size: 22px;
+  margin-bottom: 6px;
 }
 </style>
 
@@ -196,80 +83,26 @@ body {
 
 <div class="wrapper">
 
-  <!-- КНОПКА СНАРУЖИ КАРТОЧКИ -->
-  <a href="index.html" class="back-btn">← Back</a>
+  <div class="header">
+    <h1>API Hub</h1>
+    <p>Choose a service</p>
+  </div>
 
-  <div class="card">
+  <div class="cards">
 
-    <div class="header">
-      <h1>Weather</h1>
-      <p>Choose a city and get forecast</p>
-    </div>
+    <!-- WEATHER -->
+    <a href="weather.html" class="card">
+      <div class="icon">🌤️</div>
+      <div class="card-title">Weather</div>
+      <div class="card-desc">Live weather forecast API</div>
+    </a>
 
-    <div class="city">
-      <div class="city-left">
-        📍 Astana, Kazakhstan
-      </div>
-      <div class="city-btn">▼</div>
-    </div>
-
-    <div class="weather-box">
-
-      <div class="top">
-        <div>
-          <div class="temp">-2°</div>
-          <div class="desc">Clear Sky</div>
-          <div class="feels">Feels like -6°</div>
-        </div>
-
-        <div class="weather-icon">☀️</div>
-      </div>
-
-      <div class="stats">
-        <div class="stat">💧 Humidity 66%</div>
-        <div class="stat">🌬️ Wind 8 km/h</div>
-      </div>
-
-    </div>
-
-    <div class="days">
-
-      <div class="day">
-        <div class="day-icon">🌧️</div>
-        <div class="day-name">Mon</div>
-        <div class="day-temp">-1°</div>
-      </div>
-
-      <div class="day">
-        <div class="day-icon">☁️</div>
-        <div class="day-name">Tue</div>
-        <div class="day-temp">1°</div>
-      </div>
-
-      <div class="day today">
-        <div class="today-badge">TODAY</div>
-        <div class="day-icon">☀️</div>
-        <div class="day-name">Wed</div>
-        <div class="day-temp">0°</div>
-      </div>
-
-      <div class="day">
-        <div class="day-icon">🌤️</div>
-        <div class="day-name">Thu</div>
-        <div class="day-temp">2°</div>
-      </div>
-
-      <div class="day">
-        <div class="day-icon">🌙</div>
-        <div class="day-name">Fri</div>
-        <div class="day-temp">1°</div>
-      </div>
-
-    </div>
-
-    <div class="footer">
-      Updated: 10:30 AM
-    </div>
+    <!-- CURRENCY -->
+    <a href="currency.html" class="card">
+      <div class="icon">💱</div>
+      <div class="card-title">Currency</div>
+      <div class="card-desc">Exchange rates & converter</div>
+    </a>
 
   </div>
 
