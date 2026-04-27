@@ -1,210 +1,276 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Weather</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather UI</title>
 
 <style>
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #0b1220;
-  color: #e5e7eb;
+  background: #0f172a;
   display: flex;
   justify-content: center;
-  padding: 40px;
-  box-sizing: border-box;
-}
-
-/* APP WRAPPER */
-.app {
-  width: 700px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* HEADER */
-.header {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  height: 100vh;
 }
 
-.title {
-  font-size: 26px;
-  font-weight: bold;
+/* NEW WRAPPER (чтобы кнопка была слева) */
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.subtitle {
+/* BACK BUTTON (СНАРУЖИ UI) */
+.back-btn {
+  background: #e2e8f0;
+  color: #0f172a;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration: none;
   font-size: 14px;
-  opacity: 0.7;
+  height: fit-content;
 }
 
-/* CITY SELECT */
+.back-btn:hover {
+  background: #cbd5e1;
+}
+
+/* ===== ТВОЙ ОРИГИНАЛ БЕЗ ИЗМЕНЕНИЙ ===== */
+
+.card {
+  width: 350px;
+  background: #f8fafc;
+  border-radius: 22px;
+  padding: 20px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 22px;
+  color: #0f172a;
+}
+
+.header p {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: #64748b;
+}
+
 .city {
-  background: #111a2e;
-  padding: 12px 15px;
-  border-radius: 10px;
-  cursor: pointer;
-  display: inline-block;
-  width: fit-content;
-  border: 1px solid #26324a;
-}
-
-/* CURRENT WEATHER CARD */
-.current {
-  height: 220px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #1e3a8a, #0f172a);
   display: flex;
   justify-content: space-between;
-  padding: 25px;
-  box-sizing: border-box;
   align-items: center;
+  background: #e2e8f0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  margin: 12px 0;
+  font-size: 14px;
+  color: #0f172a;
 }
 
-/* LEFT SIDE */
-.info {
+.city-left {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: 6px;
 }
 
+.city-btn {
+  font-size: 12px;
+  color: #475569;
+}
+
+.weather-box {
+  background: linear-gradient(135deg, #60a5fa, #2563eb);
+  border-radius: 18px;
+  padding: 16px;
+  color: white;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .temp {
-  font-size: 48px;
-  font-weight: bold;
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -2px;
 }
 
 .desc {
-  font-size: 16px;
-  opacity: 0.85;
+  font-size: 14px;
+  margin-top: 4px;
 }
 
-.small {
-  font-size: 13px;
-  opacity: 0.7;
+.feels {
+  font-size: 12px;
+  opacity: 0.8;
 }
 
-/* ICON */
-.icon {
-  font-size: 60px;
+.weather-icon {
+  font-size: 52px;
 }
 
-/* FORECAST */
-.forecast {
+.stats {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  margin-top: 14px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  opacity: 0.95;
+}
+
+.days {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
 }
 
 .day {
   flex: 1;
-  background: #111a2e;
-  border: 1px solid #26324a;
-  border-radius: 12px;
-  padding: 15px;
+  background: #e2e8f0;
+  border-radius: 14px;
+  padding: 10px;
   text-align: center;
-}
-
-.day .name {
-  font-size: 13px;
-  opacity: 0.7;
-}
-
-.day .t {
-  font-size: 18px;
-  margin-top: 5px;
+  position: relative;
 }
 
 .day.today {
-  background: #1a2742;
-  border: 1px solid #3b82f6;
+  background: #dbeafe;
+  border: 2px solid #3b82f6;
+  box-shadow: 0 0 10px rgba(59,130,246,0.3);
 }
 
-/* FOOTER */
-.footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.today-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 9px;
+  background: #3b82f6;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+.day-name {
   font-size: 12px;
-  opacity: 0.6;
+  color: #0f172a;
+  opacity: 0.7;
 }
 
-.refresh {
-  cursor: pointer;
-  font-size: 16px;
-  transition: 0.2s;
+.day-temp {
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 4px;
 }
 
-.refresh:hover {
-  transform: rotate(90deg);
+.day-icon {
+  font-size: 18px;
+}
+
+.footer {
+  text-align: center;
+  font-size: 11px;
+  margin-top: 10px;
+  color: #64748b;
 }
 </style>
-</head>
 
+</head>
 <body>
 
-<div class="app">
+<div class="wrapper">
 
-  <!-- HEADER -->
-  <div class="header">
-    <div>
-      <div class="title">Weather</div>
-      <div class="subtitle">Choose a city and get the forecast</div>
-    </div>
-  </div>
+  <!-- КНОПКА СНАРУЖИ КАРТОЧКИ -->
+  <a href="index.html" class="back-btn">← Back</a>
 
-  <!-- CITY -->
-  <div class="city">Moscow ▼</div>
+  <div class="card">
 
-  <!-- CURRENT WEATHER -->
-  <div class="current">
-
-    <div class="info">
-      <div class="temp">+12°</div>
-      <div class="desc">Clear sky</div>
-      <div class="small">Feels like +10°</div>
-      <div class="small">Humidity: 60% • Wind: 4 m/s</div>
+    <div class="header">
+      <h1>Weather</h1>
+      <p>Choose a city and get forecast</p>
     </div>
 
-    <div class="icon">☀️</div>
-
-  </div>
-
-  <!-- FORECAST -->
-  <div class="forecast">
-
-    <div class="day">
-      <div class="name">Mon</div>
-      <div class="t">+8°</div>
-      <div class="small">-1° night</div>
+    <div class="city">
+      <div class="city-left">
+        📍 Astana, Kazakhstan
+      </div>
+      <div class="city-btn">▼</div>
     </div>
 
-    <div class="day today">
-      <div class="name">Today</div>
-      <div class="t">+12°</div>
-      <div class="small">+8° night</div>
+    <div class="weather-box">
+
+      <div class="top">
+        <div>
+          <div class="temp">-2°</div>
+          <div class="desc">Clear Sky</div>
+          <div class="feels">Feels like -6°</div>
+        </div>
+
+        <div class="weather-icon">☀️</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat">💧 Humidity 66%</div>
+        <div class="stat">🌬️ Wind 8 km/h</div>
+      </div>
+
     </div>
 
-    <div class="day">
-      <div class="name">Wed</div>
-      <div class="t">+14°</div>
-      <div class="small">+9° night</div>
+    <div class="days">
+
+      <div class="day">
+        <div class="day-icon">🌧️</div>
+        <div class="day-name">Mon</div>
+        <div class="day-temp">-1°</div>
+      </div>
+
+      <div class="day">
+        <div class="day-icon">☁️</div>
+        <div class="day-name">Tue</div>
+        <div class="day-temp">1°</div>
+      </div>
+
+      <div class="day today">
+        <div class="today-badge">TODAY</div>
+        <div class="day-icon">☀️</div>
+        <div class="day-name">Wed</div>
+        <div class="day-temp">0°</div>
+      </div>
+
+      <div class="day">
+        <div class="day-icon">🌤️</div>
+        <div class="day-name">Thu</div>
+        <div class="day-temp">2°</div>
+      </div>
+
+      <div class="day">
+        <div class="day-icon">🌙</div>
+        <div class="day-name">Fri</div>
+        <div class="day-temp">1°</div>
+      </div>
+
     </div>
 
-    <div class="day">
-      <div class="name">Thu</div>
-      <div class="t">+10°</div>
-      <div class="small">+6° night</div>
+    <div class="footer">
+      Updated: 10:30 AM
     </div>
 
-  </div>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <div>updated: 12:45 p.m.</div>
-    <div class="refresh">⟳</div>
   </div>
 
 </div>
